@@ -1,31 +1,31 @@
-# Learning Notes
+# 学习笔记
 
-Date:
+日期：
 
-## What I Implemented Today
-
--
-
-## Bugs I Hit Today
+## 今天实现了什么
 
 -
 
-## My Understanding of Matrix Storage
+## 今天遇到的 bug
 
 -
 
-## My Understanding of Row-Major and Column-Major Layout
+## 我对 Matrix 存储的理解
 
 -
 
-## My Understanding of Matmul
+## 我对 row-major / column-major 的理解
 
 -
 
-## AI Hints I Used, But Handwrote Myself
+## 我对 matmul 的理解
 
 -
 
-## What I Will Do Tomorrow
+## 哪些地方是 AI 提示过，但我自己手写的
+
+-
+
+## 明天要做什么
 
 -

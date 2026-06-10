@@ -13,7 +13,7 @@ int failures = 0;
 void require(bool condition, const std::string& message) {
     if (!condition) {
         ++failures;
-        std::cerr << "FAILED: " << message << '\n';
+        std::cerr << "失败: " << message << '\n';
     }
 }
 
@@ -30,73 +30,73 @@ bool learning_tests_enabled() {
 int main() {
     using tinytensor::Matrix;
 
-    section("Smoke tests: should pass now");
+    section("Smoke tests：现在应该通过");
     Matrix empty;
-    require(empty.rows() == 0, "default Matrix has 0 rows");
-    require(empty.cols() == 0, "default Matrix has 0 cols");
-    require(empty.size() == 0, "default Matrix has 0 elements");
-    require(empty.empty(), "default Matrix is empty");
+    require(empty.rows() == 0, "默认 Matrix 的行数是 0");
+    require(empty.cols() == 0, "默认 Matrix 的列数是 0");
+    require(empty.size() == 0, "默认 Matrix 的元素数量是 0");
+    require(empty.empty(), "默认 Matrix 是空的");
 
     if (!learning_tests_enabled()) {
-        std::cout << "\nLearning tests skipped. Set RUN_LEARNING_TESTS=1 after handwriting Matrix.\n";
+        std::cout << "\n已跳过 learning tests。等你手写 Matrix 后，设置 RUN_LEARNING_TESTS=1 再运行。\n";
         return failures == 0 ? 0 : 1;
     }
 
-    section("Learning tests: expected to fail until TODO(handwrite) is implemented");
+    section("Learning tests：在 TODO(handwrite) 完成前，预期会失败");
 
     try {
         Matrix matrix(2, 3);
-        require(matrix.rows() == 2, "Matrix(2, 3) reports 2 rows");
-        require(matrix.cols() == 3, "Matrix(2, 3) reports 3 cols");
-        require(matrix.size() == 6, "Matrix(2, 3) stores 6 elements");
-        require(!matrix.empty(), "Matrix(2, 3) is not empty");
+        require(matrix.rows() == 2, "Matrix(2, 3) 的行数是 2");
+        require(matrix.cols() == 3, "Matrix(2, 3) 的列数是 3");
+        require(matrix.size() == 6, "Matrix(2, 3) 存储 6 个元素");
+        require(!matrix.empty(), "Matrix(2, 3) 不是空矩阵");
     } catch (const std::logic_error&) {
-        require(false, "constructor still throws TODO(handwrite)");
+        require(false, "构造函数仍然抛出 TODO(handwrite)");
     }
 
     try {
         Matrix matrix = Matrix::zeros(2, 2);
-        require(matrix(0, 0) == 0.0, "zeros initializes element (0, 0)");
-        require(matrix(1, 1) == 0.0, "zeros initializes element (1, 1)");
+        require(matrix(0, 0) == 0.0, "zeros 初始化元素 (0, 0)");
+        require(matrix(1, 1) == 0.0, "zeros 初始化元素 (1, 1)");
     } catch (const std::logic_error&) {
-        require(false, "zeros/operator() still throws TODO(handwrite)");
+        require(false, "zeros/operator() 仍然抛出 TODO(handwrite)");
     }
 
     try {
         Matrix matrix = Matrix::ones(2, 2);
         matrix.fill(4.0);
-        require(matrix(0, 0) == 4.0, "fill writes element (0, 0)");
-        require(matrix(1, 1) == 4.0, "fill writes element (1, 1)");
+        require(matrix(0, 0) == 4.0, "fill 写入元素 (0, 0)");
+        require(matrix(1, 1) == 4.0, "fill 写入元素 (1, 1)");
     } catch (const std::logic_error&) {
-        require(false, "ones/fill/operator() still throws TODO(handwrite)");
+        require(false, "ones/fill/operator() 仍然抛出 TODO(handwrite)");
     }
 
     try {
         Matrix matrix(2, 3);
         matrix(0, 1) = 7.0;
-        require(matrix(0, 1) == 7.0, "operator() can write and read one element");
+        require(matrix(0, 1) == 7.0, "operator() 可以写入并读回一个元素");
     } catch (const std::logic_error&) {
-        require(false, "operator() still throws TODO(handwrite)");
+        require(false, "operator() 仍然抛出 TODO(handwrite)");
     }
 
     try {
         Matrix matrix(2, 3, 1.0);
         Matrix transposed = matrix.transpose();
-        require(transposed.rows() == 3, "transpose swaps rows");
-        require(transposed.cols() == 2, "transpose swaps cols");
+        require(transposed.rows() == 3, "transpose 交换行数");
+        require(transposed.cols() == 2, "transpose 交换列数");
     } catch (const std::logic_error&) {
-        require(false, "transpose still throws TODO(handwrite)");
+        require(false, "transpose 仍然抛出 TODO(handwrite)");
     }
 
     try {
         Matrix left(2, 3, 1.0);
         Matrix right(3, 2, 1.0);
         Matrix result = left.matmul(right);
-        require(result.rows() == 2, "matmul result rows match left rows");
-        require(result.cols() == 2, "matmul result cols match right cols");
-        require(result(0, 0) == 3.0, "matmul computes a simple dot product");
+        require(result.rows() == 2, "matmul 结果行数等于左矩阵行数");
+        require(result.cols() == 2, "matmul 结果列数等于右矩阵列数");
+        require(result(0, 0) == 3.0, "matmul 能算出一个简单点积");
     } catch (const std::logic_error&) {
-        require(false, "matmul still throws TODO(handwrite)");
+        require(false, "matmul 仍然抛出 TODO(handwrite)");
     }
 
     return failures == 0 ? 0 : 1;

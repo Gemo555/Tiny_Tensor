@@ -1,66 +1,68 @@
 # Tiny Tensor
 
-Tiny Tensor is a learning project, not a production deep learning framework.
+Tiny Tensor 是一个学习型深度学习底层项目，不是成熟的生产级深度学习框架。
 
-The goal is to understand the foundations behind tensors and deep learning systems by building them slowly: matrix storage, indexing, shape, stride, autograd, and performance work. The current version intentionally stays small and only covers the Phase 0 project skeleton plus the Phase 1 `Matrix` learning surface.
+这个项目的目标不是“尽快做完一个框架”，而是从零理解深度学习框架背后的机制：矩阵存储、索引访问、shape、stride、autograd、性能优化等。当前版本只初始化 Phase 0 工程骨架和 Phase 1 的 `Matrix` 学习接口。
 
-## Current Scope
+## 当前范围
 
-This repository currently contains:
+现在仓库里只有这些内容：
 
-- A C++17 CMake project.
-- A minimal `Matrix` class interface.
-- Smoke tests that should pass now.
-- Learning tests that describe expected `Matrix` behavior and are expected to fail until the handwritten TODOs are implemented.
-- Documentation for the roadmap, learning notes, and AI usage boundaries.
+- C++17 + CMake 工程骨架。
+- 最小 `Matrix` 类接口。
+- 现在应该通过的 smoke tests。
+- 描述 Matrix 预期行为的 learning tests，这些测试要等你手写实现后再打开。
+- roadmap、学习笔记模板、AI 使用边界文档。
 
-It does not contain Tensor, Autograd, CUDA, Python bindings, neural network modules, optimizers, dataloaders, or a benchmark framework yet.
+现在不会提前创建 Tensor、Autograd、CUDA、Python Binding、NN Module、Optimizer、Dataloader 或完整 benchmark 框架。
 
-## Build
+## 构建
 
 ```sh
 cmake -S . -B build
 cmake --build build
 ```
 
-## Run Tests
+## 运行测试
 
-Run smoke tests:
+运行现在应该通过的 smoke tests：
 
 ```sh
 ctest --test-dir build --output-on-failure
 ```
 
-Or use the helper script:
+也可以使用脚本：
 
 ```sh
 bash scripts/test.sh
 ```
 
-Run learning tests after you start implementing `Matrix`:
+当你开始手写 `Matrix` 后，再打开 learning tests：
 
 ```sh
 RUN_LEARNING_TESTS=1 ctest --test-dir build --output-on-failure
 ```
 
-## Run Example
+## 运行例子
 
 ```sh
 ./build/examples/matrix_basic
 ```
 
-On Windows with the default CMake generator, the executable may be under a configuration directory:
+Windows 默认 CMake 生成器有时会把可执行文件放到配置目录里，例如：
 
 ```sh
 ./build/examples/Debug/matrix_basic.exe
 ```
 
-## AI Usage Principle
+## AI 使用原则
 
-AI can help with project structure, CMake, tests, examples, docs, TODO prompts, review, and explanations. The core learning code should be handwritten by the learner.
+AI 可以帮你搭工程结构、写 CMake、写测试、写示例、写文档、写 TODO 提示、做 code review、解释编译错误、设计测试用例。
 
-See [docs/ai-boundary.md](docs/ai-boundary.md).
+但是核心学习代码要你自己手写，尤其是 Matrix 存储、索引、转置、矩阵乘法这些部分。
+
+详见 [docs/ai-boundary.md](docs/ai-boundary.md)。
 
 ## Roadmap
 
-See [docs/roadmap.md](docs/roadmap.md).
+详见 [docs/roadmap.md](docs/roadmap.md)。

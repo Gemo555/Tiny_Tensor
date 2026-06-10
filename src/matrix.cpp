@@ -17,13 +17,13 @@ Matrix::Matrix(std::size_t rows, std::size_t cols) {
     (void)rows;
     (void)cols;
     // TODO(handwrite):
-    //   Implement this yourself.
-    //   Think about:
-    //   1. What invariants should Matrix maintain?
-    //   2. How should row and column counts relate to storage size?
-    //   3. Should zero-sized matrices be allowed?
-    //   4. What initial value should each element have?
-    //   Do not ask AI to complete this function until you can explain the design.
+    //   请你自己实现这里。
+    //   思考：
+    //   1. Matrix 应该维护哪些不变量？
+    //   2. rows、cols 和 data_ 的大小应该是什么关系？
+    //   3. 是否允许 0 行或 0 列的矩阵？
+    //   4. 每个元素的初始值应该是什么？
+    //   在你能解释清楚设计之前，不要让 AI 直接补完这个函数。
     throw_handwrite_todo("Matrix::Matrix(rows, cols)");
 }
 
@@ -32,8 +32,8 @@ Matrix::Matrix(std::size_t rows, std::size_t cols, double value) {
     (void)cols;
     (void)value;
     // TODO(handwrite):
-    //   Implement this yourself after the basic constructor is clear.
-    //   Think about whether this constructor should reuse fill().
+    //   请在理解基础构造函数后自己实现这里。
+    //   思考：这个构造函数是否应该复用 fill()？
     throw_handwrite_todo("Matrix::Matrix(rows, cols, value)");
 }
 
@@ -57,12 +57,12 @@ double& Matrix::operator()(std::size_t row, std::size_t col) {
     (void)row;
     (void)col;
     // TODO(handwrite):
-    //   Implement this yourself.
-    //   Think about:
-    //   1. How should row and column indices map to contiguous storage?
-    //   2. What should happen on out-of-range access?
-    //   3. Should const and non-const access share the same index calculation?
-    //   Do not ask AI to complete this function until you can explain the design.
+    //   请你自己实现这里。
+    //   思考：
+    //   1. row 和 col 应该如何映射到连续存储 data_ 的下标？
+    //   2. 如果访问越界，应该发生什么？
+    //   3. const 和非 const 版本是否应该复用同一套下标计算逻辑？
+    //   在你能解释清楚设计之前，不要让 AI 直接补完这个函数。
     throw_handwrite_todo("Matrix::operator()(row, col)");
 }
 
@@ -70,16 +70,16 @@ const double& Matrix::operator()(std::size_t row, std::size_t col) const {
     (void)row;
     (void)col;
     // TODO(handwrite):
-    //   Implement this yourself.
-    //   Keep behavior consistent with the non-const overload.
+    //   请你自己实现这里。
+    //   行为要和非 const 版本保持一致。
     throw_handwrite_todo("Matrix::operator()(row, col) const");
 }
 
 void Matrix::fill(double value) {
     (void)value;
     // TODO(handwrite):
-    //   Implement this yourself.
-    //   Think about whether fill should change shape or only existing elements.
+    //   请你自己实现这里。
+    //   思考：fill 应该改变矩阵形状，还是只修改已有元素？
     throw_handwrite_todo("Matrix::fill(value)");
 }
 
@@ -87,7 +87,7 @@ Matrix Matrix::zeros(std::size_t rows, std::size_t cols) {
     (void)rows;
     (void)cols;
     // TODO(handwrite):
-    //   Implement this yourself after the constructor and fill are clear.
+    //   请在理解构造函数和 fill 后自己实现这里。
     throw_handwrite_todo("Matrix::zeros(rows, cols)");
 }
 
@@ -95,31 +95,31 @@ Matrix Matrix::ones(std::size_t rows, std::size_t cols) {
     (void)rows;
     (void)cols;
     // TODO(handwrite):
-    //   Implement this yourself after zeros is clear.
+    //   请在理解 zeros 后自己实现这里。
     throw_handwrite_todo("Matrix::ones(rows, cols)");
 }
 
 Matrix Matrix::transpose() const {
     // TODO(handwrite):
-    //   Implement this yourself.
-    //   Think about:
-    //   1. What should the output shape be?
-    //   2. Which input element maps to each output element?
-    //   3. Does this version copy data or create a view?
-    //   Do not ask AI to complete this function until you can explain the design.
+    //   请你自己实现这里。
+    //   思考：
+    //   1. 输出矩阵的 shape 应该是什么？
+    //   2. 输入矩阵的哪个元素会映射到输出矩阵的哪个元素？
+    //   3. 当前版本应该复制数据，还是创建 view？
+    //   在你能解释清楚设计之前，不要让 AI 直接补完这个函数。
     throw_handwrite_todo("Matrix::transpose()");
 }
 
 Matrix Matrix::matmul(const Matrix& other) const {
     (void)other;
     // TODO(handwrite):
-    //   Implement this yourself.
-    //   Think about:
-    //   1. What dimensions are valid for A.matmul(B)?
-    //   2. What should happen when dimensions do not match?
-    //   3. What are the three loops in naive matrix multiplication?
-    //   4. Which memory access pattern is cache-friendly?
-    //   Do not ask AI to complete this function until you can explain the design.
+    //   请你自己实现这里。
+    //   思考：
+    //   1. A.matmul(B) 对维度有什么要求？
+    //   2. 维度不匹配时应该发生什么？
+    //   3. 朴素矩阵乘法的三层循环分别是什么？
+    //   4. 哪种内存访问模式更适合缓存？
+    //   在你能解释清楚设计之前，不要让 AI 直接补完这个函数。
     throw_handwrite_todo("Matrix::matmul(other)");
 }
 
