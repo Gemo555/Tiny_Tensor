@@ -14,27 +14,15 @@ namespace {
 }  // namespace
 
 Matrix::Matrix(std::size_t rows, std::size_t cols) {
-    (void)rows;
-    (void)cols;
-    // TODO(handwrite):
-    //   请你自己实现这里。
-    //   思考：
-    //   1. Matrix 应该维护哪些不变量？
-    //   2. rows、cols 和 data_ 的大小应该是什么关系？
-    //   3. 是否允许 0 行或 0 列的矩阵？
-    //   4. 每个元素的初始值应该是什么？
-    //   在你能解释清楚设计之前，不要让 AI 直接补完这个函数。
-    throw_handwrite_todo("Matrix::Matrix(rows, cols)");
+    rows_ = rows;
+    cols_ = cols;
+    data_.resize(rows_ * cols_);
 }
 
 Matrix::Matrix(std::size_t rows, std::size_t cols, double value) {
-    (void)rows;
-    (void)cols;
-    (void)value;
-    // TODO(handwrite):
-    //   请在理解基础构造函数后自己实现这里。
-    //   思考：这个构造函数是否应该复用 fill()？
-    throw_handwrite_todo("Matrix::Matrix(rows, cols, value)");
+    rows_ = rows;
+    cols_ = cols;
+    data_.resize(rows_ * cols_, value);
 }
 
 std::size_t Matrix::rows() const noexcept {
@@ -54,49 +42,37 @@ bool Matrix::empty() const noexcept {
 }
 
 double& Matrix::operator()(std::size_t row, std::size_t col) {
-    (void)row;
-    (void)col;
-    // TODO(handwrite):
-    //   请你自己实现这里。
-    //   思考：
-    //   1. row 和 col 应该如何映射到连续存储 data_ 的下标？
-    //   2. 如果访问越界，应该发生什么？
-    //   3. const 和非 const 版本是否应该复用同一套下标计算逻辑？
-    //   在你能解释清楚设计之前，不要让 AI 直接补完这个函数。
-    throw_handwrite_todo("Matrix::operator()(row, col)");
+    if (row >= rows_ || col >= cols_) {
+        throw std::out_of_range("Matrix index out of range");
+    }
+
+    return data_[row * cols_ + col];
 }
 
 const double& Matrix::operator()(std::size_t row, std::size_t col) const {
-    (void)row;
-    (void)col;
-    // TODO(handwrite):
-    //   请你自己实现这里。
-    //   行为要和非 const 版本保持一致。
-    throw_handwrite_todo("Matrix::operator()(row, col) const");
+    if (row >= rows_ || col >= cols_) {
+        throw std::out_of_range("Matrix index out of range");
+    }
+
+    return data_[row * cols_ + col];
 }
 
 void Matrix::fill(double value) {
-    (void)value;
-    // TODO(handwrite):
-    //   请你自己实现这里。
-    //   思考：fill 应该改变矩阵形状，还是只修改已有元素？
-    throw_handwrite_todo("Matrix::fill(value)");
+    for (std::size_t i = 0; i < data_.size(); ++i) {
+        data_[i] = value;
+    }
 }
 
 Matrix Matrix::zeros(std::size_t rows, std::size_t cols) {
-    (void)rows;
-    (void)cols;
-    // TODO(handwrite):
-    //   请在理解构造函数和 fill 后自己实现这里。
-    throw_handwrite_todo("Matrix::zeros(rows, cols)");
+    Matrix m(rows, cols);
+    m.fill(0.0);
+    return m;
 }
 
 Matrix Matrix::ones(std::size_t rows, std::size_t cols) {
-    (void)rows;
-    (void)cols;
-    // TODO(handwrite):
-    //   请在理解 zeros 后自己实现这里。
-    throw_handwrite_todo("Matrix::ones(rows, cols)");
+    Matrix m(rows, cols);
+    m.fill(1.0);
+    return m;
 }
 
 Matrix Matrix::transpose() const {
