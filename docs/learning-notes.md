@@ -45,6 +45,11 @@
 | 朴素 matmul | 可实现 | 能写出三层循环，并理解维度匹配条件 |
 | 缓存友好访问 | 已有基础 | 能解释为什么 `i-k-j` 对 row-major 更友好 |
 | 编译错误定位 | 开始建立感觉 | 能从 `找不到标识符`、`未声明` 这类错误定位拼写和作用域问题 |
+| 测试文件阅读 | 可读懂 | 能看懂 `tests/test_matrix.cpp` 的测试结构和每组测试的目的 |
+| 手动编译命令 | 初步理解 | 能理解 `g++`、`-std=c++17`、`-Iinclude`、源文件列表和 `-o` 的作用 |
+| 编译和链接区分 | 初步理解 | 能区分头文件找不到和 `undefined reference` 这类链接错误 |
+| CMake/CTest 基本链路 | 大致看懂 | 能理解 `enable_testing()`、`add_test()` 和 `ctest --test-dir build --output-on-failure` 的关系 |
+| 控制台输出 | 初步理解 | 能区分 `std::cout`、`std::cerr`、`'\n'` 和 `std::endl` 的基本使用场景 |
 
 ### 今天的关键突破
 
@@ -53,6 +58,7 @@
 3. 从“照着写函数”推进到“能判断函数职责边界”，例如 `fill()` 不应该改变 shape。
 4. 从“matmul 只是公式”推进到“循环顺序和内存访问模式有关”。
 5. 从“测试像黑盒”推进到“知道测试就是一个普通 C++ 程序在检查条件”。
+6. 从“只会运行命令”推进到“理解 g++ 编译命令、CMake 测试登记和 CTest 运行测试之间的关系”。
 
 ### 项目当前完成度评估
 
@@ -78,6 +84,16 @@
 2. 增加空矩阵和更多边界 case 的测试。
 3. 记录一个非常简单的 matmul 时间对比，为后面性能阶段埋点。
 4. 复盘 Phase 1：哪些代码已经真正能解释，哪些还只是会写。
+
+### 上下文恢复方式
+
+为了避免长对话占满上下文，新增 `docs/session-brief.md` 作为交接单。以后新会话可以先读：
+
+- `docs/session-brief.md`
+- `docs/learning-notes.md`
+- `docs/content-roadmap.md`
+- `README.md`
+- 最近的 `git log --oneline`
 
 ### 当前进度感
 
