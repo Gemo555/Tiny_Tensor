@@ -26,7 +26,8 @@
 | 工厂函数 | 完成 | `zeros()`、`ones()` 能创建常用初始化矩阵 |
 | 转置 | 完成 | `transpose()` 能生成行列互换的新矩阵 |
 | 朴素矩阵乘法 | 完成 | `matmul()` 能完成基础矩阵乘法，并使用 `i-k-j` 循环顺序 |
-| 本地测试 | 通过 | smoke tests 和 learning tests 已在本地跑通 |
+| Matrix 行为测试 | 完成第一版 | 已覆盖构造、索引、越界、维度错误、转置具体数值、matmul 具体数值 |
+| 本地测试 | 通过 | smoke tests、learning tests 和 example 已在本地跑通 |
 
 ### 今天真正掌握的能力
 
@@ -58,7 +59,7 @@
 | 阶段 | 目标 | 当前完成度 |
 | --- | --- | --- |
 | Phase 0：工程骨架 | CMake、Git、CI、基础文档、测试入口 | 约 80% |
-| Phase 1：Matrix 基础类 | 构造、索引、fill、zeros、ones、transpose、matmul | 约 70% |
+| Phase 1：Matrix 基础类 | 构造、索引、fill、zeros、ones、transpose、matmul、基础行为测试 | 约 80% |
 | Phase 2：Tensor | shape、stride、offset、多维 Tensor | 0%，还未开始 |
 | Phase 3：Autograd | 计算图、backward、梯度传播 | 0%，还未开始 |
 
@@ -66,20 +67,17 @@
 
 ### 还不能算完成的地方
 
-- `Matrix` 的测试还太少，只覆盖了最小 happy path。
-- 还没有专门测试非方阵转置的具体数值。
-- 还没有测试 matmul 维度不匹配时是否正确抛异常。
-- 还没有测试 `operator()` 越界访问。
-- README 和 example 还停留在早期提示，需要更新成当前进度。
-- 本地还有 2 个提交没有 push 到 GitHub，因为网络连接 GitHub 超时。
+- `Matrix` 的测试已经覆盖第一层核心行为，但还没有覆盖更多边界情况，例如空矩阵参与 transpose/matmul。
+- 还没有独立的性能记录。
+- 还没有把 row-major、transpose、matmul 的理解整理成面向阅读的说明文档。
+- 后续还可以考虑把重复的越界检查和下标计算整理成小的私有辅助函数。
 
 ### 下一步优先级
 
-1. 补测试：非方阵 `transpose()` 的具体结果。
-2. 补测试：`matmul()` 的具体数值结果。
-3. 补测试：维度不匹配和越界访问。
-4. 更新 README，让它不再提示“下一步实现构造函数”。
-5. 网络恢复后执行 `git push`。
+1. 整理一份 `docs/matrix-notes.md`，解释 row-major、transpose、matmul。
+2. 增加空矩阵和更多边界 case 的测试。
+3. 记录一个非常简单的 matmul 时间对比，为后面性能阶段埋点。
+4. 复盘 Phase 1：哪些代码已经真正能解释，哪些还只是会写。
 
 ### 当前进度感
 

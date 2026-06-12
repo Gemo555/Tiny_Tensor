@@ -85,6 +85,7 @@ C++ 工程基础
 - `fill()`、`zeros()`、`ones()`
 - `transpose()`
 - `matmul()`，使用 `i-k-j` 循环顺序
+- Matrix 第一版行为测试：构造、索引、越界、维度错误、非方阵转置具体数值、matmul 具体数值
 
 当前掌握：
 
@@ -96,6 +97,7 @@ C++ 工程基础
 - `transpose` 的核心映射是 `result(j, i) = input(i, j)`。
 - `matmul` 的维度要求是 `left.cols == right.rows`。
 - `i-k-j` 在 row-major 下可以更连续地访问右矩阵行和结果矩阵行。
+- 测试不只是“能不能跑”，也可以作为行为规格：明确告诉自己每个函数应该满足什么。
 
 可分享主题：
 
@@ -109,11 +111,11 @@ Stage 1 当前完成度估计：
 
 ```text
 Matrix 最小功能：约 70%
-Matrix 测试覆盖：约 35%
+Matrix 测试覆盖：约 60%
 Matrix 文档解释：约 40%
 ```
 
-下一步不是立刻进入 Tensor，而是先补 Matrix 测试和说明。
+下一步不是立刻进入 Tensor，而是先整理 Matrix 说明和更多边界 case。
 
 ### Stage 2：Tensor，理解 shape / stride / offset
 
@@ -251,13 +253,13 @@ Matrix 文档解释：约 40%
 - 起点：C 语言基础，C++ 还在边学边写。
 - 第一个核心问题：二维矩阵如何存进一维连续内存。
 - 今日成果：Matrix 最小功能闭环跑通。
-- 下一期：补测试，解释 transpose 和 matmul。
+- 下一期：解释 transpose、matmul，以及为什么测试能帮助学习底层实现。
 
 ## 当前阶段状态快照
 
 截至 2026-06-12：
 
 - Phase 0 工程骨架：约 80%。
-- Phase 1 Matrix 基础类：约 70%。
+- Phase 1 Matrix 基础类：约 80%。
 - 整体长期项目：仍处于早期，约 10% 以内。
 - 当前最大价值：已经建立了从“概念 -> 手写实现 -> 编译错误 -> 测试验证 -> 复盘记录”的学习闭环。
